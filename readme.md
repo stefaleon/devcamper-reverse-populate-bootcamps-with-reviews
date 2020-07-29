@@ -6,7 +6,7 @@ Original code from Brad Traversy's Udemy course
 
 ### Modifications
 
-#### Suggedted by [Xiaoming Wang](https://www.udemy.com/user/xiaoming-wang-9/)
+#### Suggested by [Xiaoming Wang](https://www.udemy.com/user/xiaoming-wang-9/)
 
 _models/Bootcamp.js_
 
