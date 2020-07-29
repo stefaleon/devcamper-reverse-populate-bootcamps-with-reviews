@@ -1,45 +1,42 @@
-# DevCamper API
+# DevCamper API, reverse populate bootcamps with reviews
 
-> Backend API for DevCamper application, which is a bootcamp directory website
+Original code from Brad Traversy's Udemy course
 
-## Usage
+[https://github.com/bradtraversy/devcamper-api](https://github.com/bradtraversy/devcamper-api)
 
-Rename "config/config.env.env" to "config/config.env" and update the values/settings to your own
+### Modifications
 
-## Install Dependencies
-
-```
-npm install
-```
-
-## Run App
+_models/Bootcamp.js_
 
 ```
-# Run in dev mode
-npm run dev
-
-# Run in prod mode
-npm start
+BootcampSchema.virtual('reviewspart', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'bootcamp',
+  justOne: false,
+});
 ```
 
-## Database Seeder
-
-To seed the database with users, bootcamps, courses and reviews with data from the "\_data" folder, run
+_routes/bootcamps.js_
 
 ```
-# Destroy all data
-node seeder -d
-
-# Import all data
-node seeder -i
+router
+  .route('/')
+  .get(advancedResults(Bootcamp, 'courses', 'reviewspart'), getBootcamps)
 ```
 
-## Demo
+_middleware/advancedResults.js_
 
-The API is live at [devcamper.io](https://devcamper.io)
+```
+const advancedResults = (model, populate1, populate2) => async (
 
-Extensive documentation with examples [here](https://documenter.getpostman.com/view/8923145/SVtVVTzd?version=latest)
+//...
 
-- Version: 1.0.0
-- License: MIT
-- Author: Brad Traversy
+  if (populate1) {
+    query = query.populate(populate1);
+  }
+  if (populate2) {
+    query = query.populate(populate2);
+  }
+
+```
