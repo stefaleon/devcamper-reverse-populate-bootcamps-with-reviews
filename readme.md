@@ -1,6 +1,6 @@
 # DevCamper API, reverse populate bootcamps with reviews
 
-Original code from Brad Traversy's Udemy course
+#### Original code from [Brad Traversy's Udemy course](https://www.udemy.com/course/nodejs-api-masterclass)
 
 [https://github.com/bradtraversy/devcamper-api](https://github.com/bradtraversy/devcamper-api)
 
